@@ -6,6 +6,12 @@ model, implementation order, and acceptance criteria. Re-check official
 documentation and the installed Copilot CLI help before relying on details:
 the CLI and provider support evolve.
 
+For product framing, first-run flow, navigation, visual language, content
+voice, and MVP boundaries, see [`PRODUCT_UX_CONCEPT.md`](PRODUCT_UX_CONCEPT.md).
+Use it together with [`UI_WIREFRAMES.md`](UI_WIREFRAMES.md); the concept
+establishes why the UI is shaped this way, while the wireframes show rough
+screen structure.
+
 ## Product goal
 
 Build an approachable, windowed, cross-platform setup tool for people who use
@@ -58,14 +64,18 @@ The repository is at `/home/hack/Projects/copilot-config-studio`.
 
 - Scaffold: Tauri 2 + SvelteKit + Svelte 5 + TypeScript.
 - Static SPA mode is set in `src/routes/+layout.ts`.
-- `src/routes/+page.svelte` is still the untouched greeting demo.
+- `src/routes/+page.svelte` contains the first Workbench concept prototype:
+  route selection is in-memory only; Providers and CLI Settings show honest
+  not-implemented states. It does not read/write settings, contact providers,
+  or launch Copilot CLI.
 - `src-tauri/src/lib.rs` is still the greeting-command demo.
 - `jsonc-parser`, `@xterm/xterm`, and `@xterm/addon-fit` have been added.
   `jsonc-parser` supports the planned JSONC editor. The xterm packages are
   currently unused; remove them if no actual terminal panel is implemented.
 - There is no settings UI, settings schema, provider profile store, secure
   credential store, provider/model discovery, validation, launch, or test
-  suite yet.
+  suite yet. The visible route choice is conceptual UI only, not a configured
+  provider or active CLI route.
 - This environment did not have `webkit2gtk-4.1` when scaffolded. Install the
   official Tauri Linux prerequisites before native Linux `tauri dev/build`.
 - The generated package installs completed. `npm install` reported three low
@@ -82,8 +92,9 @@ Follow the screen layouts and interaction contracts in
 [`UI_WIREFRAMES.md`](UI_WIREFRAMES.md). Use a simple left navigation or top
 tabs:
 
-1. **Overview** — detected Copilot CLI path/version, current model mode, active
-   provider profile, and clear setup/validation status.
+1. **Setup** — detected Copilot CLI path/version when available, current model
+   route, and clear setup/validation status. On first use, present the route
+   choices from the product concept.
 2. **Copilot settings** — search/filter settings from the installed CLI's
    supported settings catalog, with type-aware inputs, descriptions, valid
    enum choices, scope, current value, and source/override warnings.
@@ -91,14 +102,15 @@ tabs:
    mode, model ID, optional distinct wire model, token limits, auth method,
    custom headers, and secret input. Show locally discovered models as
    autocomplete suggestions but always permit deliberate manual entry.
-4. **Validate** — run preflight checks and display separate results for local
-   validation, endpoint reachability, model listing, credentials, and optional
-   live tool/streaming compatibility.
-5. **Apply / Launch** — review proposed settings changes and profile selection,
-   then confirm. Offer a clear button to launch Copilot CLI with the profile.
-6. **Activity** — safe, redacted history of outcomes and timestamps; never
-   retain prompt bodies, API keys, auth headers, or raw sensitive provider
-   responses.
+4. **Validation** — show separate results in the relevant setup/provider
+   context for local validation, CLI support, endpoint reachability, model
+   listing, and optional live compatibility.
+5. **Apply / Launch** — review proposed settings changes and route selection,
+   then confirm. Offer a clear action to launch Copilot CLI once that behavior
+   is implemented and tested.
+6. **Activity (later)** — add only if there is a privacy-safe, useful history;
+   never retain prompt bodies, API keys, auth headers, or raw sensitive
+   provider responses.
 
 Use keyboard-accessible controls, focus indication, labels, and responsive
 layout. Give every asynchronous operation a loading state, timeout/cancel

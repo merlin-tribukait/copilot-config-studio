@@ -9,8 +9,8 @@ launch. Continue the deeper feature work from
 ## PR goal
 
 Replace the starter greeting screen with a polished, responsive, accessible
-app shell and Overview empty/detected states. Add the smallest useful typed
-UI primitives and tests. It must remain an honest prototype: do not show
+app shell and Setup route-choice state. Add the smallest useful typed UI
+primitives and tests. It must remain an honest prototype: do not show
 fabricated CLI detection, validation success, provider data, or working
 settings.
 
@@ -31,7 +31,7 @@ command remains; no terminal dependency remains without an implemented use.
 
 ### 2. Build the shared app frame
 
-- [ ] Implement navigation for Overview, CLI Settings, and Providers, matching
+- [ ] Implement navigation for Setup, CLI Settings, and Providers, matching
   [`UI_WIREFRAMES.md`](UI_WIREFRAMES.md).
 - [ ] Add app header, main content region, and persistent CLI/config status
   region.
@@ -44,13 +44,16 @@ command remains; no terminal dependency remains without an implemented use.
 **Done when:** every visible navigation item has a meaningful implemented
 destination/state; no dead buttons or fake completion status remain.
 
-### 3. Implement an honest Overview empty state
+### 3. Implement an honest Setup route chooser
 
-- [ ] Show the purpose and GitHub-hosted vs BYOK/local distinction.
+- [ ] Show GitHub-hosted Copilot, a local model, and an external provider as
+  distinct routes with accurate availability, hardware, data, and cost notes.
 - [ ] Provide clear next-step entry points into settings and provider setup,
   but disable or label flows that are not yet implemented.
+- [ ] Keep route selection in-memory until safe profile/settings flows exist;
+  label it as a draft, not an active or saved route.
 - [ ] Add an explicit CLI-detection unavailable state that says detection is
-  not implemented yet, rather than presenting a hard-coded path/version.
+  not connected, rather than presenting a hard-coded path/version.
 - [ ] Include concise privacy/cost copy: local inference uses local hardware;
   remote providers may receive prompts/context and may charge independently.
 

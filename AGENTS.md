@@ -4,8 +4,9 @@
 
 Build Copilot Config Studio as a small, safe, cross-platform desktop app for
 managing GitHub Copilot CLI settings and BYOK providers. Read the project
-overview in `README.md` and the behavioral specification in
-`docs/IMPLEMENTATION_GUIDE.md` before implementing features.
+overview in `README.md`, product framing in `docs/PRODUCT_UX_CONCEPT.md`,
+screen flows in `docs/UI_WIREFRAMES.md`, and the behavioral specification in
+`docs/IMPLEMENTATION_GUIDE.md` before implementing UI features.
 
 ## Non-negotiable safety and correctness
 
@@ -67,9 +68,14 @@ overview in `README.md` and the behavioral specification in
 
 ## Current scaffold state
 
-This is an unimplemented starter scaffold. The frontend page still contains
-the Tauri/Svelte greeting demo and the Rust backend contains the starter
-`greet` command. Dependencies for `jsonc-parser` and xterm are installed.
-Neither xterm nor a terminal emulator is a product requirement; do not include
-one unless there is a concrete, safe UX case. No settings editor, provider
-registry, credential storage, validation, or Copilot launch flow exists yet.
+The frontend now contains an honest, interactive setup-route concept and
+placeholder Providers/CLI Settings destinations. Route choice is held only in
+UI memory and does not read/write configuration, contact a provider, or launch
+the CLI. The product rationale is in `docs/PRODUCT_UX_CONCEPT.md`; detailed
+rough layouts remain in `docs/UI_WIREFRAMES.md`.
+
+The Rust backend still contains the starter `greet` command, which should be
+removed in the first native-backend change. Dependencies for `jsonc-parser`
+and xterm are installed. xterm is unused and should be removed unless a
+specific terminal feature is approved. No settings editor, provider registry,
+credential storage, validation, or Copilot launch flow exists yet.

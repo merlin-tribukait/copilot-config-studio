@@ -5,6 +5,10 @@ They are structure and interaction guidance, not pixel-perfect mockups.
 Controls shown for future phases must be visibly disabled or omitted until
 their behavior is implemented and validated; do not ship decorative buttons
 that imply an operation succeeded.
+Follow [`PRODUCT_UX_CONCEPT.md`](PRODUCT_UX_CONCEPT.md) for the product
+rationale, first-run route choice, content voice, and MVP boundary. Example
+paths, model IDs, endpoint names, versions, and ready states below are
+illustrative—not detected user configuration.
 
 ## Shared app frame
 
@@ -12,10 +16,9 @@ that imply an operation succeeded.
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │ Copilot Config Studio                              [Help] [Preferences] [—□×]│
 ├───────────────────┬────────────────────────────────────────────────────────┤
-│ OVERVIEW          │ Page title                     [contextual primary action]│
+│ SETUP             │ Page title                     [contextual primary action]│
 │ CLI SETTINGS      │                                                        │
 │ PROVIDERS         │ Main content                                          │
-│ VALIDATION        │                                                        │
 │                   │                                                        │
 │                   │                                                        │
 ├───────────────────┴────────────────────────────────────────────────────────┤
@@ -25,20 +28,46 @@ that imply an operation succeeded.
 
 - Keep a persistent, non-sensitive CLI/config status visible without taking
   focus from the current task.
-- Navigation should expose Overview, CLI Settings, and Providers in the first
-  usable release. Validation and Activity can appear as contextual sections
-  when those features exist.
+- Navigation should expose Setup, Providers, and CLI Settings in the first
+  usable release. Validation belongs with the setup/profile it checks.
+  Activity can be added later if a privacy-safe history is useful.
 - Show the active app scope and selected provider profile. Never show a
   credential value in status text.
 - The window must remain useful at a compact width: collapse navigation to
   icons with accessible names or a menu; do not force horizontal scrolling.
 
-## Overview — first-run and configured states
+## Setup — first-run and configured states
+
+The configured-state values below are illustrative synthetic values. The
+prototype currently shows the explicit not-checked state only.
+
+First-run route choice:
 
 ```text
 ┌────────────────────────────────────────────────────────────────────────────┐
-│ Welcome to Copilot Config Studio                                           │
-│ Manage Copilot CLI settings and model providers from one place.            │
+│ Set up Copilot CLI                                                         │
+│ Choose how you want Copilot CLI to use a model.                            │
+│                                                                            │
+│ ┌─ GitHub Copilot ──────┐ ┌─ Local model ─────────┐ ┌─ Hosted provider ──┐ │
+│ │ Use model access      │ │ Use a model server on │ │ Connect an external│ │
+│ │ available to your     │ │ your device/network.  │ │ model provider.    │ │
+│ │ signed-in account.    │ │ Uses your hardware.   │ │ May bill separately│ │
+│ │ [Review CLI setup]    │ │ [Set up local model]  │ │ [Add provider]     │ │
+│ └──────────────────────┘ └───────────────────────┘ └────────────────────┘ │
+│                                                                            │
+│ Availability and usage limits depend on your Copilot account and policy.   │
+│ External providers may receive prompts and context and may charge fees.   │
+└────────────────────────────────────────────────────────────────────────────┘
+```
+
+Do not label any route “free.” At compact widths, stack the cards vertically.
+Explain hosting, data destination, and possible cost before the user saves
+credentials, sends a request, or launches the CLI.
+
+```text
+┌────────────────────────────────────────────────────────────────────────────┐
+│ Your Copilot CLI setup                                                     │
+│ Understand and manage the model route used by Copilot CLI.                 │
 │                                                                            │
 │ ┌─ Copilot CLI ────────────────────┐  ┌─ Current model route ────────────┐ │
 │ │ ✓ Found: /usr/local/bin/copilot │  │ GitHub-hosted · Auto (Efficiency)│ │
@@ -52,8 +81,8 @@ that imply an operation succeeded.
 │ │ [Set up a provider]  [Review settings]                                 │ │
 │ └────────────────────────────────────────────────────────────────────────┘ │
 │                                                                            │
-│ BYOK uses the selected provider. Provider charges and data policies may   │
-│ differ from your GitHub Copilot plan. Local models use your own hardware.  │
+│ External provider billing and data handling are separate from GitHub.      │
+│ Local models use your own hardware.                                        │
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -117,8 +146,8 @@ Behavior:
 │ ┌───────────────────┐  ┌─ Local Ollama ──────────────────────────────────┐ │
 │ │ ● Local Ollama    │  │ Provider type      [OpenAI-compatible ▾]        │ │
 │ │   OpenAI compat.  │  │ Base URL           [http://localhost:11434/v1  ]│ │
-│ │                   │  │ Model              [qwen2.5-coder:14b        ▾] │ │
-│ │   Work gateway    │  │ API / wire mode    [Auto? No—choose explicitly]│ │
+│ │                   │  │ Model              [Enter model ID…          ▾] │ │
+│ │   Work gateway    │  │ API / wire mode    [Choose supported mode ▾]   │ │
 │ │   + Add profile   │  │ Authentication    [No credential ▾]           │ │
 │ │                   │  │ API key            [••••••••••••••] [Replace]  │ │
 │ │                   │  │                                                   │ │

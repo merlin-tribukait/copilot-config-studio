@@ -5,10 +5,11 @@ bring-your-own-key (BYOK) model providers. The goal is to make model setup
 discoverable, validate configurations before use, and show clearly what the
 app will change.
 
-> **Status:** early scaffold. The Tauri + SvelteKit shell exists, but the
-> configuration UI and Rust commands have not been implemented yet. See
-> [AGENTS.md](AGENTS.md) and
-> [docs/IMPLEMENTATION_GUIDE.md](docs/IMPLEMENTATION_GUIDE.md) before coding.
+> **Status:** early concept prototype. The Svelte screen has an interactive
+> in-memory route choice and placeholder navigation. It does not read or edit
+> settings, connect to providers, or launch Copilot CLI. See
+> [AGENTS.md](AGENTS.md), [docs/PRODUCT_UX_CONCEPT.md](docs/PRODUCT_UX_CONCEPT.md),
+> and [docs/IMPLEMENTATION_GUIDE.md](docs/IMPLEMENTATION_GUIDE.md).
 
 ## Intended capabilities
 
@@ -66,6 +67,8 @@ the platform prerequisites.
   `greet` command with typed, narrowly scoped configuration operations.
 - `src-tauri/tauri.conf.json` — desktop window and bundling configuration.
 - `AGENTS.md` — project-wide instructions for AI coding agents.
+- `docs/PRODUCT_UX_CONCEPT.md` — product promise, user journeys, information
+  architecture, visual direction, and MVP boundary.
 - `docs/IMPLEMENTATION_GUIDE.md` — product behavior, architecture, safety,
   validation, and acceptance-test guide.
 - `docs/UI_WIREFRAMES.md` — screen-by-screen low-fidelity UX and interaction
