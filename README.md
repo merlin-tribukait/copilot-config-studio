@@ -100,8 +100,7 @@ the platform prerequisites.
 
 - `src/routes/+page.svelte` — project overview, interactive click dummy, and
   context-aware GitHub issue composer.
-- `.github/workflows/jekyll-gh-pages.yml` — tests, builds, and publishes the web demo to
-  GitHub Pages on changes to the application.
+- `gh-pages` — static browser demo published by GitHub Pages.
 - `.github/ISSUE_TEMPLATE/` — structured bug and feature request templates.
 - `src/lib/github-feedback.ts` — privacy-limited GitHub issue draft URL helper.
 - `static/brand/` — editable SVG icon, monochrome mark, and wordmark artwork.
@@ -132,10 +131,29 @@ phase in `docs/IMPLEMENTATION_GUIDE.md`. The browser page is a click dummy,
 not a working configuration manager; its guide identifies which actions are
 illustrative and which checks actually run.
 
-GitHub Pages is built by `.github/workflows/jekyll-gh-pages.yml` with the project
-subpath configured for this repository. The workflow tests and type-checks
-before publishing; it runs on pushes to `main` that change the frontend or
-deployment workflow.
+GitHub Pages currently serves the `gh-pages` branch because GitHub Actions is
+temporarily unavailable for the repository owner account. Build the browser
+demo locally with the repository subpath enabled:
+
+```sh
+GITHUB_PAGES=true VITE_GITHUB_PAGES=true npm run build
+```
+
+Publish the generated `build/` contents to the `gh-pages` branch, keeping
+`.nojekyll` at the branch root so GitHub serves the `_app/` assets. GitHub
+Pages then publishes the branch without running a GitHub Actions workflow. For
+example, from the repository root:
+
+```sh
+deploy_dir="$(mktemp -d)"
+git clone --single-branch --branch gh-pages \
+  https://github.com/merlin-tribukait/copilot-config-studio.git "$deploy_dir"
+cp -a build/. "$deploy_dir/"
+touch "$deploy_dir/.nojekyll"
+git -C "$deploy_dir" add -A
+git -C "$deploy_dir" commit -m "Deploy static click dummy"
+git -C "$deploy_dir" push origin gh-pages
+```
 
 ## Configuration references
 

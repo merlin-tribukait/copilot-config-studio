@@ -1,14 +1,15 @@
 # Brand assets
 
-Copilot Config Studio uses a small route-to-hub mark: three route lines meet a
-central node, then continue as an arrow. The artwork is an original project
-identity and is not affiliated with or endorsed by GitHub.
+Copilot Config Studio's mark is a luminous, geometric "M" rune: its joined
+strokes suggest a configured path, while the orbit and golden star add a quiet
+Merlin-inspired spark. The artwork is an original project identity and is not
+affiliated with or endorsed by GitHub.
 
 ## Source artwork
 
 | Asset | Intended use |
 |---|---|
-| `static/brand/app-icon.svg` | Square gradient app mark; source for native application icons. |
+| `static/brand/app-icon.svg` | Square midnight-violet app mark with a luminous M rune and golden star; source for native application icons. |
 | `static/brand/wordmark.svg` | Wordmark for light surfaces. |
 | `static/brand/wordmark-light.svg` | Wordmark for dark surfaces. |
 | `static/brand/mark-mono.svg` | Single-color SVG mark. Inline it to inherit `currentColor`; external `<img>` usage uses the SVG's default color. |
@@ -37,7 +38,9 @@ linked separately from `src/app.html`.
 
 ## Visual guidance
 
-- Keep the violet gradient for the app icon and primary brand moments.
+- Keep the midnight-violet, teal, and soft-gold palette for primary brand moments.
+- Preserve the M rune and star as a single signature; avoid adding literal wizard
+  hats, staffs, or dense ornamental detail at small sizes.
 - Use the monochrome mark when a single-color symbol is needed.
 - Preserve clear space around the icon and do not stretch the wordmarks.
 - Do not add GitHub's Octocat, Copilot symbol, or GitHub wordmark to this
