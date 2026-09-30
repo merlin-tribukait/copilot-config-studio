@@ -69,6 +69,13 @@ the platform prerequisites.
 - `docs/IMPLEMENTATION_GUIDE.md` — product behavior, architecture, safety,
   validation, and acceptance-test guide.
 
+## Continue development
+
+Start with `AGENTS.md`, then follow Phase 0 in
+`docs/IMPLEMENTATION_GUIDE.md`. The checked-in scaffold is intentionally only a
+starting point; the guide's current-state section calls out what is and is not
+implemented yet.
+
 ## Configuration references
 
 - [Copilot CLI BYOK guide](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/use-byok-models)
