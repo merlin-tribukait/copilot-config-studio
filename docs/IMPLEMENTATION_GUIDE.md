@@ -78,7 +78,9 @@ The repository is at `/home/hack/Projects/copilot-config-studio`.
 
 ## UX outline
 
-Use a simple left navigation or top tabs:
+Follow the screen layouts and interaction contracts in
+[`UI_WIREFRAMES.md`](UI_WIREFRAMES.md). Use a simple left navigation or top
+tabs:
 
 1. **Overview** — detected Copilot CLI path/version, current model mode, active
    provider profile, and clear setup/validation status.

@@ -68,6 +68,10 @@ the platform prerequisites.
 - `AGENTS.md` — project-wide instructions for AI coding agents.
 - `docs/IMPLEMENTATION_GUIDE.md` — product behavior, architecture, safety,
   validation, and acceptance-test guide.
+- `docs/UI_WIREFRAMES.md` — screen-by-screen low-fidelity UX and interaction
+  guidance.
+- `docs/FIRST_PR_CHECKLIST.md` — prioritized, bounded checklist for the first
+  UI implementation PR.
 - `CONTRIBUTING.md` — local setup and contribution expectations.
 - `.github/workflows/ci.yml` — frontend and Rust checks across supported OSes.
 
