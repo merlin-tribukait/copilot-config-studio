@@ -1,0 +1,52 @@
+name: Bug report
+description: Report a reproducible problem in Copilot Config Studio.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Never include API keys, credentials, private prompts, or unredacted configuration/logs.
+        For suspected security vulnerabilities, follow [SECURITY.md](https://github.com/merlin-tribukait/copilot-config-studio/blob/main/SECURITY.md) instead.
+  - type: input
+    id: version
+    attributes:
+      label: App version or commit
+      description: If this is a local build, include the commit hash.
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Linux
+        - macOS
+        - Windows
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Use placeholder values instead of real credentials or private data.
+      placeholder: |
+        1. Open ...
+        2. Select ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Redact credentials, prompts, and private paths.
+    validations:
+      required: true
