@@ -64,18 +64,37 @@ The repository is at `/home/hack/Projects/copilot-config-studio`.
 
 - Scaffold: Tauri 2 + SvelteKit + Svelte 5 + TypeScript.
 - Static SPA mode is set in `src/routes/+layout.ts`.
-- `src/routes/+page.svelte` contains the first Workbench concept prototype:
-  route selection is in-memory only; Providers and CLI Settings show honest
-  not-implemented states. It does not read/write settings, contact providers,
-  or launch Copilot CLI.
+- `src/routes/+page.svelte` contains the Workbench concept prototype: route
+  selection, provider setup click dummy, profile/workspace previews, and
+  appearance controls. The provider dummy checks required fields and URL shape
+  locally, then presents a review/finish walkthrough. Profiles, workspace
+  entries, discovery-source selections, themes, and named grouped color
+  profiles are held in memory only. Workspaces can override the global color
+  profile; the Appearance page previews global or workspace-specific palettes.
+  Workspace paths are manually entered draft metadata; no paths or integrations
+  are discovered or inspected. Nothing reads/writes settings,
+  contacts providers, stores credentials, or launches Copilot CLI. CLI
+  Settings remains a not-implemented state.
 - `src-tauri/src/lib.rs` is still the greeting-command demo.
 - `jsonc-parser`, `@xterm/xterm`, and `@xterm/addon-fit` have been added.
   `jsonc-parser` supports the planned JSONC editor. The xterm packages are
   currently unused; remove them if no actual terminal panel is implemented.
 - There is no settings UI, settings schema, provider profile store, secure
-  credential store, provider/model discovery, validation, launch, or test
-  suite yet. The visible route choice is conceptual UI only, not a configured
-  provider or active CLI route.
+  credential store, provider/model discovery, endpoint compatibility check,
+  persistence, or launch flow. Unit tests cover only the local draft-format
+  validator (`npm test`); they do not validate actual providers. The visible
+  route/profile draft is not saved or active. See
+  [`BRAND_ASSETS.md`](BRAND_ASSETS.md) for artwork source files and generated
+  icon variants.
+- The Profiles concept uses a global default and per-workspace override
+  selector; unassigned workspaces inherit the selected default. Discovery
+  source controls are opt-in UI only and currently perform no system access.
+  Appearance supports system/light/dark/dark-dimmed plus named color profiles
+  with separate brand/focus, surface, and text/border tokens. Workspaces may
+  use a palette override or inherit the global selection. All appearance
+  choices reset on reload. Future integration work should use explicit consent,
+  documented CLI or official sign-in flows, inspect only approved paths and
+  non-secret metadata, and never read credential stores or source contents.
 - This environment did not have `webkit2gtk-4.1` when scaffolded. Install the
   official Tauri Linux prerequisites before native Linux `tauri dev/build`.
 - The generated package installs completed. `npm install` reported three low

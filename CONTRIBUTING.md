@@ -8,10 +8,16 @@ larger changes.
 
 - Read `AGENTS.md` for project-wide implementation and security requirements.
 - Read `docs/IMPLEMENTATION_GUIDE.md` for product scope and planned phases.
+- Explore the [browser click dummy](https://merlin-tribukait.github.io/copilot-config-studio/)
+  and its [guide](docs/CLICK_DUMMY_GUIDE.md) before proposing UX changes.
 - For significant behavior or architecture changes, open an issue or draft
   discussion first so the approach can be agreed before substantial work.
 - Do not include real provider credentials, personal configuration files,
   private prompts, or unredacted logs in issues or pull requests.
+- Use the in-demo Feedback button or the repository's issue templates for
+  product feedback. The demo opens a prefilled GitHub draft; it never submits
+  an issue automatically. Do not report security vulnerabilities publicly;
+  follow `SECURITY.md`.
 
 ## Local development
 

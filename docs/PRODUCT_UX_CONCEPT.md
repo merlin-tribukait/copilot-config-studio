@@ -5,6 +5,15 @@ initial interactive UI prototype. It is a decision guide for design and
 implementation, not evidence of user research or a claim that any pictured
 state already works.
 
+The current prototype includes a browser-memory-only provider form, local
+format checks, a draft review/finish walkthrough, global configuration
+profiles, workspace overrides, opt-in discovery-source controls, and
+appearance customization. Named color profiles group editable brand/focus,
+surface, and text/border colors; a workspace can inherit the global palette or
+select its own. None of these profiles persist data or inspect the device;
+appearance choices last only for the current session. Format checks are not
+provider connectivity, model availability, CLI support, or persistence checks.
+
 ## Product idea
 
 **Copilot Config Studio is a calm setup workbench for Copilot CLI.** It helps
@@ -86,7 +95,11 @@ Shared shell:
 
 - App identity and compact global status.
 - Current workspace/page title and contextual action.
-- Help/about and preferences only when they have real behavior.
+- Profile and appearance destinations for defaults, workspace overrides, and
+  interface preferences.
+- Named palette profiles with grouped color controls and per-workspace
+  appearance overrides, visibly marked as session-only.
+- Help/about only when it has real behavior.
 - Status text should never reveal keys, tokens, auth headers, or private model
   response content.
 
@@ -229,8 +242,12 @@ Avoid:
 
 - Replace the starter welcome page with the Workbench shell and a truthful
   Setup route chooser/not-detected state.
-- Add useful navigation destinations for Setup, Providers, and CLI Settings,
-  clearly marking operations not yet implemented.
+- Add useful navigation destinations for Setup, Profiles, Providers,
+  Appearance, and CLI Settings, clearly marking operations not yet implemented.
+- Preview a global default profile and manually entered workspace overrides;
+  keep discovery-source selection opt-in and do not inspect paths or tools.
+- Preview system/light/dark/dimmed themes and accents without persistent
+  preferences.
 - Establish semantic design tokens, accessible focus/status treatment, and
   responsive layouts.
 - Do not show fake CLI detection, models, provider profiles, validation

@@ -5,11 +5,44 @@ bring-your-own-key (BYOK) model providers. The goal is to make model setup
 discoverable, validate configurations before use, and show clearly what the
 app will change.
 
-> **Status:** early concept prototype. The Svelte screen has an interactive
-> in-memory route choice and placeholder navigation. It does not read or edit
-> settings, connect to providers, or launch Copilot CLI. See
+**Project page and browser click dummy:** [merlin-tribukait.github.io/copilot-config-studio](https://merlin-tribukait.github.io/copilot-config-studio/)
+
+**Report a bug or suggest an improvement:** [open a GitHub issue](https://github.com/merlin-tribukait/copilot-config-studio/issues/new)
+
+> **Status:** early concept prototype. The Svelte screen includes an
+> project overview, interactive route chooser, provider setup click dummy,
+> in-memory profile and workspace previews, and session-only appearance
+> customization with named editable color profiles and per-workspace palette
+> overrides. Local required-field/URL checks are not provider compatibility
+> tests. It does not discover integrations or workspaces, persist settings,
+> send provider requests, store credentials, or launch Copilot CLI. The web
+> page is a demonstration, not a hosted configuration service. See
 > [AGENTS.md](AGENTS.md), [docs/PRODUCT_UX_CONCEPT.md](docs/PRODUCT_UX_CONCEPT.md),
-> and [docs/IMPLEMENTATION_GUIDE.md](docs/IMPLEMENTATION_GUIDE.md).
+> [docs/IMPLEMENTATION_GUIDE.md](docs/IMPLEMENTATION_GUIDE.md), and the
+> [click dummy guide](docs/CLICK_DUMMY_GUIDE.md) and [brand asset guide](docs/BRAND_ASSETS.md).
+
+## Try the click dummy
+
+Open the [browser demo](https://merlin-tribukait.github.io/copilot-config-studio/)
+and choose **Try the interactive click dummy**. The setup, provider, profile,
+workspace, and appearance screens demonstrate intended interaction patterns;
+values are in-memory drafts and reset when the page reloads.
+
+The provider walkthrough only checks required fields and URL shape locally.
+Use obviously fictional values. It does not check network connectivity,
+provider compatibility, model availability, account entitlement, or cost.
+Workspace paths are manually typed placeholders and are never opened or
+discovered. No credentials should be entered.
+
+Use the **Feedback** button to draft a bug report, feature request, usability
+note, or question. It opens a prefilled GitHub issue composer with the selected
+page, UI area, and viewport dimensions. The title and description you
+intentionally enter are included when opening that draft. Review and edit it
+on GitHub before submitting; you must be signed in. The demo does not read or
+attach app configuration values, workspace paths, provider URLs, prompts,
+credentials, or device files. Never put secrets or private prompts in a public
+issue. Security issues must follow [SECURITY.md](SECURITY.md), not the public
+feedback form.
 
 ## Intended capabilities
 
@@ -25,6 +58,9 @@ app will change.
   report exactly what succeeded or failed.
 - Keep API credentials in the operating system credential store, never in
   plaintext settings, logs, or shell command strings.
+- Offer an explicit global default profile, optional per-workspace overrides,
+  and user-controlled integration discovery once safe local integrations are
+  implemented.
 
 This project is independent community software and is not affiliated with or
 endorsed by GitHub.
@@ -43,6 +79,7 @@ Install and run:
 
 ```sh
 npm ci
+npm test
 npm run check
 npm run tauri dev
 ```
@@ -61,7 +98,15 @@ the platform prerequisites.
 
 ## Project structure
 
-- `src/routes/+page.svelte` — Svelte UI entry point.
+- `src/routes/+page.svelte` — project overview, interactive click dummy, and
+  context-aware GitHub issue composer.
+- `.github/workflows/pages.yml` — tests, builds, and publishes the web demo to
+  GitHub Pages on changes to the application.
+- `.github/ISSUE_TEMPLATE/` — structured bug and feature request templates.
+- `src/lib/github-feedback.ts` — privacy-limited GitHub issue draft URL helper.
+- `static/brand/` — editable SVG icon, monochrome mark, and wordmark artwork.
+- `src-tauri/icons/` — generated desktop and mobile application icon sizes.
+- `docs/BRAND_ASSETS.md` — logo variants, usage guidance, and source files.
 - `src/routes/+layout.ts` — static SPA mode required by Tauri.
 - `src-tauri/src/lib.rs` — Rust/Tauri backend commands. Replace the starter
   `greet` command with typed, narrowly scoped configuration operations.
@@ -69,6 +114,8 @@ the platform prerequisites.
 - `AGENTS.md` — project-wide instructions for AI coding agents.
 - `docs/PRODUCT_UX_CONCEPT.md` — product promise, user journeys, information
   architecture, visual direction, and MVP boundary.
+- `docs/CLICK_DUMMY_GUIDE.md` — complete click-through instructions, feature
+  boundaries, feedback flow, and privacy details.
 - `docs/IMPLEMENTATION_GUIDE.md` — product behavior, architecture, safety,
   validation, and acceptance-test guide.
 - `docs/UI_WIREFRAMES.md` — screen-by-screen low-fidelity UX and interaction
@@ -80,10 +127,15 @@ the platform prerequisites.
 
 ## Continue development
 
-Start with `AGENTS.md`, then follow Phase 0 in
-`docs/IMPLEMENTATION_GUIDE.md`. The checked-in scaffold is intentionally only a
-starting point; the guide's current-state section calls out what is and is not
-implemented yet.
+Start with `AGENTS.md`, then read the current-state section and next incomplete
+phase in `docs/IMPLEMENTATION_GUIDE.md`. The browser page is a click dummy,
+not a working configuration manager; its guide identifies which actions are
+illustrative and which checks actually run.
+
+GitHub Pages is built by `.github/workflows/pages.yml` with the project
+subpath configured for this repository. The workflow tests and type-checks
+before publishing; it runs on pushes to `main` that change the frontend or
+deployment workflow.
 
 ## Configuration references
 

@@ -9,6 +9,9 @@ import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 const config = {
   preprocess: vitePreprocess(),
   kit: {
+    paths: {
+      base: process.env.GITHUB_PAGES === "true" ? "/copilot-config-studio" : "",
+    },
     adapter: adapter({
       fallback: "index.html",
     }),

@@ -68,11 +68,23 @@ screen flows in `docs/UI_WIREFRAMES.md`, and the behavioral specification in
 
 ## Current scaffold state
 
-The frontend now contains an honest, interactive setup-route concept and
-placeholder Providers/CLI Settings destinations. Route choice is held only in
-UI memory and does not read/write configuration, contact a provider, or launch
-the CLI. The product rationale is in `docs/PRODUCT_UX_CONCEPT.md`; detailed
-rough layouts remain in `docs/UI_WIREFRAMES.md`.
+The frontend contains a project overview for the GitHub Pages build, an
+interactive setup-route concept, provider setup click dummy, in-memory
+global/workspace profile previews, opt-in discovery-source controls, and
+session-only appearance settings with named editable color profiles and
+workspace-specific palette overrides. The provider draft form performs only
+local required-field and URL-shape checks. The Feedback dialog prepares a
+prefilled GitHub issue URL containing the visitor's entered report plus the
+current prototype page, selected UI area, and viewport size; it does not submit
+the issue automatically or collect app configuration values. No profile or
+workspace path is persisted; discovery controls do not scan or inspect the
+device. Nothing reads/writes configuration, contacts a provider, stores
+credentials, or launches the CLI. CLI Settings remains a placeholder. The
+GitHub Pages workflow builds with the `/copilot-config-studio` base path; the
+native app build must retain its root base. Brand source artwork and usage
+guidance are in
+`static/brand/` and `docs/BRAND_ASSETS.md`; product rationale is in
+`docs/PRODUCT_UX_CONCEPT.md`, with rough layouts in `docs/UI_WIREFRAMES.md`.
 
 The Rust backend still contains the starter `greet` command, which should be
 removed in the first native-backend change. Dependencies for `jsonc-parser`

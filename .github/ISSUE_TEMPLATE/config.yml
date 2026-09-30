@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Try the interactive click dummy
+    url: https://merlin-tribukait.github.io/copilot-config-studio/
+    about: Explore the browser demo before reporting a product issue or idea.
+  - name: Read the prototype and safety guide
+    url: https://github.com/merlin-tribukait/copilot-config-studio/blob/main/docs/IMPLEMENTATION_GUIDE.md
+    about: Check what the current prototype does and intentionally does not do.
