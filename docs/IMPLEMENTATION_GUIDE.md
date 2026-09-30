@@ -221,6 +221,16 @@ tested.
 
 Complete phases as working vertical slices; keep this document updated.
 
+### Resume prompt for a future coding session
+
+From the project root, ask the coding agent:
+
+> Read `AGENTS.md`, `README.md`, and `docs/IMPLEMENTATION_GUIDE.md`. Inspect the
+> current worktree and scaffold before editing. Continue with the next
+> incomplete implementation phase, keep the guide's current-state section up
+> to date, and run the smallest relevant checks. Do not claim features are
+> implemented or validated unless you verified them.
+
 ### Phase 0 — Clean scaffold and portability
 
 - Replace the Svelte greeting screen with an app shell, navigation, visual
