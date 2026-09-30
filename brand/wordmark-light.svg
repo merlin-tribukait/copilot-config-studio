@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 88">
+  <defs>
+    <linearGradient id="tile" x1="10" y1="10" x2="76" y2="78" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#202644"/>
+      <stop offset=".56" stop-color="#29204F"/>
+      <stop offset="1" stop-color="#101827"/>
+    </linearGradient>
+    <linearGradient id="rune" x1="22" y1="35" x2="60" y2="62" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9DE9E4"/>
+      <stop offset=".48" stop-color="#F4F1FF"/>
+      <stop offset="1" stop-color="#B6A7FF"/>
+    </linearGradient>
+  </defs>
+  <rect x="6" y="6" width="76" height="76" rx="23" fill="url(#tile)"/>
+  <circle cx="44" cy="44" r="36" fill="#8174F4" fill-opacity=".18"/>
+  <path d="m24 61 5-25c.9-4.3 5.3-5.1 7.6-1.4L42 47l6.5-11.4c2.3-3.9 6.9-2.9 7.7 1.5L62 61" fill="none" stroke="url(#rune)" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+  <circle cx="23.5" cy="62" r="2.3" fill="#91E4DF"/>
+  <circle cx="62.5" cy="62" r="2.3" fill="#B6A7FF"/>
+  <path d="m60 15 2.1 6.2 6.2 2.1-6.2 2.1L60 31.6l-2.1-6.2-6.2-2.1 6.2-2.1L60 15Z" fill="#FFE29A"/>
+  <circle cx="34.5" cy="17.5" r="1.7" fill="#9DE9E4"/>
+  <text x="101" y="44" fill="#F3F2FA" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="27" font-weight="680" letter-spacing="-1.25">Copilot Config</text>
+  <path d="m322 21 1.5 4.2 4.2 1.5-4.2 1.5-1.5 4.2-1.5-4.2-4.2-1.5 4.2-1.5 1.5-4.2Z" fill="#FFE29A"/>
+  <text x="103" y="68" fill="#B9AEFF" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="750" letter-spacing="4">STUDIO</text>
+  <path d="M103 76h42" stroke="#FFE29A" stroke-linecap="round" stroke-opacity=".8" stroke-width="1.5"/>
+</svg>
