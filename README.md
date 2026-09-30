@@ -100,7 +100,7 @@ the platform prerequisites.
 
 - `src/routes/+page.svelte` — project overview, interactive click dummy, and
   context-aware GitHub issue composer.
-- `.github/workflows/pages.yml` — tests, builds, and publishes the web demo to
+- `.github/workflows/jekyll-gh-pages.yml` — tests, builds, and publishes the web demo to
   GitHub Pages on changes to the application.
 - `.github/ISSUE_TEMPLATE/` — structured bug and feature request templates.
 - `src/lib/github-feedback.ts` — privacy-limited GitHub issue draft URL helper.
@@ -132,7 +132,7 @@ phase in `docs/IMPLEMENTATION_GUIDE.md`. The browser page is a click dummy,
 not a working configuration manager; its guide identifies which actions are
 illustrative and which checks actually run.
 
-GitHub Pages is built by `.github/workflows/pages.yml` with the project
+GitHub Pages is built by `.github/workflows/jekyll-gh-pages.yml` with the project
 subpath configured for this repository. The workflow tests and type-checks
 before publishing; it runs on pushes to `main` that change the frontend or
 deployment workflow.
